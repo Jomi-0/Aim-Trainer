@@ -18,8 +18,15 @@ class Target:
     def __init__(Self,x,y): #self allows you to access the attributes and methods of the object. When you create an object from a class, the __init__ method is automatically called.
         self.x=x
         self.y=y
-        self.size=0
-        self.grow=True
+        self.size =0
+        self.grow =True
+    def update(self):
+        if self.size + self.GROWTH_RATE >= self.MAX_SIZE:
+            self.grow = False
+        if self.grow:
+            self.size += self.GROWTH_RATE
+        else:
+            self.grow -= self.GROWTH_RATE
 def main():
     run = True
     while run:
