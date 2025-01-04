@@ -32,10 +32,10 @@ class Target:
         else:
             self.grow -= self.GROWTH_RATE
     def draw(self,win):
-        pygame.draw.circle(win,self.COLOUR,self.x,self.y,self.size)
-        pygame.draw.circle(win,self.SECOND_COLOUR,self.x,self.y,self.size*0.8)
-        pygame.draw.circle(win,self.COLOUR,self.x,self.y,self.size*0.6)
-        pygame.draw.circle(win,self.SECOND_COLOUR,self.x,self.y,self.size*0.4)
+        pygame.draw.circle(win,self.COLOUR,(self.x,self.y),self.size)
+        pygame.draw.circle(win,self.SECOND_COLOUR,(self.x,self.y),self.size*0.8)
+        pygame.draw.circle(win,self.COLOUR,(self.x,self.y),self.size*0.6)
+        pygame.draw.circle(win,self.SECOND_COLOUR,(self.x,self.y),self.size*0.4)
 
 def draw(win, targets):
     win.fill("Black")      # Background colour
