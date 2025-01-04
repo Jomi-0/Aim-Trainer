@@ -49,7 +49,7 @@ def main():
     clock = pygame.time.Clock() #creating a framerate so it isn't based on how fast the computer processing speed is
     pygame.time.set_timer(TARGET_EVENT,TARGET_INCREMENT)
     while run:
-        clock.tick(60)
+        clock.tick(60) #because the targets update by frames the more frames there are the harder it becomes
         for event in pygame.event.get():
             if event.type== pygame.QUIT:
                 run = False
@@ -61,6 +61,8 @@ def main():
                 targets.append(target)
         for target in targets:
             target.update()
+            if target.size>=0:
+                target.remove(targets)
         draw(WIN,targets)
     pygame.quit()
 
