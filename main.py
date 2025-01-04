@@ -46,8 +46,10 @@ def draw(win, targets):
 def main():
     run = True
     targets = []
+    clock = pygame.time.Clock() #creating a framerate so it isn't based on how fast the computer processing speed is
     pygame.time.set_timer(TARGET_EVENT,TARGET_INCREMENT)
     while run:
+        clock.tick(60)
         for event in pygame.event.get():
             if event.type== pygame.QUIT:
                 run = False
