@@ -4,6 +4,8 @@ import time
 import pygame
 pygame.init()
 
+# all unknown code gotten from https://www.youtube.com/@TechWithTim
+
 WIDTH , HEIGHT = 800, 600
 WIN = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("AIM TRAINER")
@@ -55,6 +57,7 @@ def main():
     clicks = 0
     misses = 0
     start_time = time.time()
+    
     pygame.time.set_timer(TARGET_EVENT,TARGET_INCREMENT)
     while run:
         clock.tick(60) #because the targets update by frames the more frames there are the harder it becomes
@@ -72,11 +75,15 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 click=True
                 clicks+= 1 
+                mouse_pos = pygame.mouse.get_pos()
         for target in targets:
             target.update()
             if target.size<=0:
                 targets.remove(target)
-                misses+=1
+                misses+=1               # Known as SPLAT operator
+            if click and target.collide(*mouse_pos):  # * breaks down tuple into its individual components. The collide function is not taking a tuple but the pygame.mouse.get_pos gives thex,y as a tuple so I need to separate them
+                targets.remove(target)
+                target_pressed+=1
                 
         draw(WIN,targets)
     pygame.quit()
