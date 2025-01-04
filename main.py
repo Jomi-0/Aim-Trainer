@@ -36,7 +36,11 @@ class Target:
         pygame.draw.circle(win,self.SECOND_COLOUR,(self.x,self.y),self.size*0.8)
         pygame.draw.circle(win,self.COLOUR,(self.x,self.y),self.size*0.6)
         pygame.draw.circle(win,self.SECOND_COLOUR,(self.x,self.y),self.size*0.4)
-
+    def collide(self,x,y):
+        # Calculate the distance between the point (x, y) and the center of the circle (self.x, self.y)
+        dis = math.sqrt((self.x - x) ** 2 + (self.y - y) ** 2)
+        return dis <= self.size
+        
 def draw(win, targets):
     win.fill("Black")      # Background colour
 
@@ -47,9 +51,15 @@ def main():
     run = True
     targets = []
     clock = pygame.time.Clock() #creating a framerate so it isn't based on how fast the computer processing speed is
+    target_pressed= 0
+    clicks = 0
+    misses = 0
+    start_time = time.time()
     pygame.time.set_timer(TARGET_EVENT,TARGET_INCREMENT)
     while run:
         clock.tick(60) #because the targets update by frames the more frames there are the harder it becomes
+        click=False
+
         for event in pygame.event.get():
             if event.type== pygame.QUIT:
                 run = False
@@ -59,10 +69,15 @@ def main():
                 y=random.randint(TARGET_PADDING,HEIGHT-TARGET_PADDING)
                 target=Target(x,y)
                 targets.append(target)
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                click=True
+                clicks+= 1 
         for target in targets:
             target.update()
-            if target.size>=0:
-                target.remove(targets)
+            if target.size<=0:
+                targets.remove(target)
+                misses+=1
+                
         draw(WIN,targets)
     pygame.quit()
 
