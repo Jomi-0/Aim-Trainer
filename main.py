@@ -59,7 +59,7 @@ def main():
                 targets.append(target)
         for target in targets:
             target.update()
-    draw(WIN,targets)
+        draw(WIN,targets)
     pygame.quit()
 
 if __name__ == "__main__": #makes sure the function main runs if we are exucuting this file directly
