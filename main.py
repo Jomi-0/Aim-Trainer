@@ -19,7 +19,7 @@ class Target:
     SECOND_COLOUR = "white"
     #constructor
     #set up the initial state of an object by initializing the attributes or properties of the class.
-    def __init__(Self,x,y): #self allows you to access the attributes and methods of the object. When you create an object from a class, the __init__ method is automatically called.
+    def __init__(self,x,y): #self allows you to access the attributes and methods of the object. When you create an object from a class, the __init__ method is automatically called.
         self.x=x
         self.y=y
         self.size =0
