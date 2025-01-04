@@ -46,7 +46,7 @@ def draw(win, targets):
 def main():
     run = True
     target = []
-    pygame.time,set_timer(TARGET_EVENT,TARGET_INCREMENT)
+    pygame.time.set_timer(TARGET_EVENT,TARGET_INCREMENT)
     while run:
         for event in pygame.event.get():
             if event.type== pygame.QUIT:
