@@ -118,7 +118,7 @@ def main():
 
         for event in pygame.event.get():
             if event.type== pygame.QUIT:
-                run = False
+                quit()
                 break
             if event.type == TARGET_EVENT:
                 x=random.randint(TARGET_PADDING,WIDTH-TARGET_PADDING) #preventing target from going of screen because of radius
