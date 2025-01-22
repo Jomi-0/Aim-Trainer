@@ -7,7 +7,7 @@ pygame.init()
 # all unknown code gotten from https://www.youtube.com/@TechWithTim
 
 WIDTH , HEIGHT = 800, 600
-WIN = pygame.display.set_mode((WIDTH,HEIGHT))
+WIN = pygame.display.set_mode((WIDTH,HEIGHT)) #game window where everything is drawn
 pygame.display.set_caption("AIM TRAINER")
 
 
